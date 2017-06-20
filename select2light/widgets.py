@@ -1,5 +1,5 @@
 from django.utils.encoding import force_text
-from django.utils.datastructures import MultiValueDict, MergeDict
+from django.utils.datastructures import MultiValueDict
 import floppyforms as forms
 
 
@@ -23,7 +23,7 @@ class Select2MultipleWidget(Select2Widget):
     allow_multiple_selected = True
 
     def value_from_datadict(self, data, files, name):
-        if isinstance(data, (MultiValueDict, MergeDict)):
+        if isinstance(data, (MultiValueDict)):
             return data.getlist(name)
         return data.get(name, None)
 
